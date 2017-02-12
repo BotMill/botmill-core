@@ -64,7 +64,6 @@ public class BotMillServlet extends HttpServlet {
 		logger.info("BotMill servlet correctly started.");
 	}
 	
-
 	/**
 	 * Utility method that converts a Reader to a String.
 	 *

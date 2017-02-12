@@ -45,10 +45,14 @@ public class BotMillConfigurationException extends RuntimeException {
 	/**
 	 * Instantiates a new BotMillConfigurationException.
 	 *
-	 * @param message the message.
-	 * @param cause the cause.
-	 * @param enableSuppression the enableSuppression.
-	 * @param writableStackTrace the writableStackTrace.
+	 * @param message
+	 *            the message.
+	 * @param cause
+	 *            the cause.
+	 * @param enableSuppression
+	 *            the enableSuppression.
+	 * @param writableStackTrace
+	 *            the writableStackTrace.
 	 */
 	public BotMillConfigurationException(String message, Throwable cause,
 			boolean enableSuppression, boolean writableStackTrace) {
@@ -58,8 +62,10 @@ public class BotMillConfigurationException extends RuntimeException {
 	/**
 	 * Instantiates a new BotMillConfigurationException.
 	 *
-	 * @param message the message.
-	 * @param cause the cause.
+	 * @param message
+	 *            the message.
+	 * @param cause
+	 *            the cause.
 	 */
 	public BotMillConfigurationException(String message, Throwable cause) {
 		super(message, cause);
@@ -68,7 +74,8 @@ public class BotMillConfigurationException extends RuntimeException {
 	/**
 	 * Instantiates a new BotMillConfigurationException.
 	 *
-	 * @param message the message.
+	 * @param message
+	 *            the message.
 	 */
 	public BotMillConfigurationException(String message) {
 		super(message);
@@ -77,13 +84,16 @@ public class BotMillConfigurationException extends RuntimeException {
 	/**
 	 * Instantiates a new BotMillConfigurationException.
 	 *
-	 * @param cause the cause.
+	 * @param cause
+	 *            the cause.
 	 */
 	public BotMillConfigurationException(Throwable cause) {
 		super(cause);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Throwable#toString()
 	 */
 	@Override

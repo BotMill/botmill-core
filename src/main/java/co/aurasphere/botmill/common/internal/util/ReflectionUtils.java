@@ -39,6 +39,9 @@ import co.aurasphere.botmill.common.internal.exception.BotMillConfigurationExcep
  */
 public class ReflectionUtils {
 
+	/**
+	 * The logger.
+	 */
 	private static final Logger logger = LoggerFactory
 			.getLogger(ReflectionUtils.class);
 
@@ -77,6 +80,16 @@ public class ReflectionUtils {
 								+ " ].", e);
 			}
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ReflectionUtils []";
 	}
 
 }

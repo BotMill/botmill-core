@@ -23,6 +23,7 @@
  */
 package co.aurasphere.botmill.common.internal.util;
 
+import java.lang.reflect.Modifier;
 import java.util.Set;
 
 import org.reflections.Reflections;
@@ -60,6 +61,12 @@ public class ReflectionUtils {
 
 		// Tries to load and instantiate the bot definitions.
 		for (Class<? extends BotDefinition> defClass : botDefinitions) {
+			
+			// If the class is abstract, skips it.
+			if(Modifier.isAbstract(defClass.getModifiers())){
+				continue;
+			}
+			
 			try {
 				BotDefinition instance = defClass.newInstance();
 				instance.defineBehavior();

@@ -1,8 +1,5 @@
 *.class
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
 # Package Files #
 *.jar
 *.war
@@ -16,3 +13,5 @@ hs_err_pid*
 *.prefs
 .project
 *.classpath
+.settings/
+target/

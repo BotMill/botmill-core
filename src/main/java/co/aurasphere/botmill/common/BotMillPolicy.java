@@ -24,7 +24,7 @@
 package co.aurasphere.botmill.common;
 
 /**
- * Enumeration that indicates which policy a {@link Bot} will use when
+ * Enumeration that indicates which policy a bot will use when
  * processing the callback handler chain.
  * 
  * @author Donato Rimenti

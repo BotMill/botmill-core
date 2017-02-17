@@ -56,7 +56,7 @@ public class BotMillServlet extends HttpServlet {
 	 * Initializes the BotMill servlet. The initialization will try to load the
 	 * classes implementing {@link BotDefinition} in the classpath. If the
 	 * classes are found and correctly loaded, the method
-	 * {@link BotDefinition#defineBehavior()} is called for each configuration.
+	 * {@link BotDefinition#defineBehaviour()} is called for each configuration.
 	 */
 	@Override
 	public void init() {

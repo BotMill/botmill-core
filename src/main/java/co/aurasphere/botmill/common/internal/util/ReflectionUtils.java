@@ -55,6 +55,7 @@ public class ReflectionUtils {
 		Reflections ref = new Reflections();
 		Set<Class<? extends BotDefinition>> botDefinitions = ref
 				.getSubTypesOf(BotDefinition.class);
+		
 		if (botDefinitions.isEmpty()) {
 			logger.warn("No bot definition found on the classpath. Make sure to have at least one class implementing the BotDefinition interface.");
 		}
@@ -69,7 +70,7 @@ public class ReflectionUtils {
 			
 			try {
 				BotDefinition instance = defClass.newInstance();
-				instance.defineBehavior();
+				instance.defineBehaviour();
 			} catch (ClassCastException e) {
 				logger.error(
 						"Class [{}] does not implement co.aurasphere.botmill.common.BotDefinition.",

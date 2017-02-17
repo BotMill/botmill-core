@@ -35,6 +35,6 @@ public interface BotDefinition {
 	/**
 	 * Method used for the configuration of the bot.
 	 */
-	public void defineBehavior();
+	void defineBehaviour();
 
 }

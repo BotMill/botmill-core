@@ -21,18 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.common.internal.exception;
-
+package co.aurasphere.botmill.core.internal.exception;
 
 /**
- * Exception used to handle an attachment that's not permitted for a
- * response.
+ * Exception used for BotMill configuration errors.
  * 
  * @author Donato Rimenti
- * 
  */
-public class BotMillIllegalAttachmentException extends
-		IllegalArgumentException {
+public class BotMillConfigurationException extends RuntimeException {
 
 	/**
 	 * The serial version UID.
@@ -40,13 +36,59 @@ public class BotMillIllegalAttachmentException extends
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Instantiates a new BotMillIllegalAttachmentException.
+	 * Instantiates a new BotMillConfigurationException.
+	 */
+	public BotMillConfigurationException() {
+		super();
+	}
+
+	/**
+	 * Instantiates a new BotMillConfigurationException.
+	 *
+	 * @param message
+	 *            the message.
+	 * @param cause
+	 *            the cause.
+	 * @param enableSuppression
+	 *            the enableSuppression.
+	 * @param writableStackTrace
+	 *            the writableStackTrace.
+	 */
+	public BotMillConfigurationException(String message, Throwable cause,
+			boolean enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+	}
+
+	/**
+	 * Instantiates a new BotMillConfigurationException.
+	 *
+	 * @param message
+	 *            the message.
+	 * @param cause
+	 *            the cause.
+	 */
+	public BotMillConfigurationException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	/**
+	 * Instantiates a new BotMillConfigurationException.
 	 *
 	 * @param message
 	 *            the message.
 	 */
-	public BotMillIllegalAttachmentException(String message) {
+	public BotMillConfigurationException(String message) {
 		super(message);
+	}
+
+	/**
+	 * Instantiates a new BotMillConfigurationException.
+	 *
+	 * @param cause
+	 *            the cause.
+	 */
+	public BotMillConfigurationException(Throwable cause) {
+		super(cause);
 	}
 
 	/*
@@ -56,7 +98,7 @@ public class BotMillIllegalAttachmentException extends
 	 */
 	@Override
 	public String toString() {
-		return "BotMillIllegalAttachmentException []";
+		return "BotMillConfigurationException []";
 	}
 
 }

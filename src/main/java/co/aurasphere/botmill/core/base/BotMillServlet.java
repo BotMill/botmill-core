@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.common.base;
+package co.aurasphere.botmill.core.base;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -31,8 +31,8 @@ import javax.servlet.http.HttpServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import co.aurasphere.botmill.common.BotDefinition;
-import co.aurasphere.botmill.common.internal.util.ConfigurationUtils;
+import co.aurasphere.botmill.core.BotDefinition;
+import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
 /**
  * Base BotMill servlet with shared behavior.

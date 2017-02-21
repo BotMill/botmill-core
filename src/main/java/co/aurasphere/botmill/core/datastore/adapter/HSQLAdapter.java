@@ -21,20 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.common;
+package co.aurasphere.botmill.core.datastore.adapter;
 
-/**
- * An interface that represents the base configuration of a bot. To configure
- * your bot, you will need at least a class that implements this interface.
- * 
- * @author Donato Rimenti
- * 
- */
-public interface BotDefinition {
-
-	/**
-	 * Method used for the configuration of the bot.
-	 */
-	void defineBehaviour();
-
+public class HSQLAdapter {
+	//TODO: Create the adapater class for HSQL Connection
 }

@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.common.internal.util;
+package co.aurasphere.botmill.core.internal.util;
 
 import java.lang.reflect.Modifier;
 import java.util.Properties;
@@ -31,8 +31,8 @@ import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import co.aurasphere.botmill.common.BotDefinition;
-import co.aurasphere.botmill.common.internal.exception.BotMillConfigurationException;
+import co.aurasphere.botmill.core.BotDefinition;
+import co.aurasphere.botmill.core.internal.exception.BotMillConfigurationException;
 
 /**
  * Utility class for handling BotMill configuration.

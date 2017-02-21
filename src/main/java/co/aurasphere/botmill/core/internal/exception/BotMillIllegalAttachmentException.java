@@ -1,8 +1,7 @@
-/**
- * 
+/*
  * MIT License
  *
- * Copyright (c) 2017 BotMill.io
+ * Copyright (c) 2016 BotMill.io
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,84 +20,42 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
  */
-package co.aurasphere.botmill.datastore.model;
+package co.aurasphere.botmill.core.internal.exception;
 
-import java.io.Serializable;
 
 /**
- * The Class KeyValuePair.
+ * Exception used to handle an attachment that's not permitted for a
+ * response.
+ * 
+ * @author Donato Rimenti
  */
-public class KeyValuePair implements Serializable{
-	
-	/** The Constant serialVersionUID. */
+public class BotMillIllegalAttachmentException extends
+		IllegalArgumentException {
+
+	/**
+	 * The serial version UID.
+	 */
 	private static final long serialVersionUID = 1L;
-	
-	/** The id. */
-	private String id;
-	
-	/** The key. */
-	private String key;
-	
-	/** The value. */
-	private Object value;
-	
+
 	/**
-	 * Gets the id.
+	 * Instantiates a new BotMillIllegalAttachmentException.
 	 *
-	 * @return the id
+	 * @param message
+	 *            the message.
 	 */
-	public String getId() {
-		return id;
+	public BotMillIllegalAttachmentException(String message) {
+		super(message);
 	}
-	
-	/**
-	 * Sets the id.
-	 *
-	 * @param id the new id
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Throwable#toString()
 	 */
-	public void setId(String id) {
-		this.id = id;
+	@Override
+	public String toString() {
+		return "BotMillIllegalAttachmentException []";
 	}
-	
-	/**
-	 * Gets the key.
-	 *
-	 * @return the key
-	 */
-	public String getKey() {
-		return key;
-	}
-	
-	/**
-	 * Sets the key.
-	 *
-	 * @param key the new key
-	 */
-	public void setKey(String key) {
-		this.key = key;
-	}
-	
-	/**
-	 * Gets the value.
-	 *
-	 * @return the value
-	 */
-	public Object getValue() {
-		return value;
-	}
-	
-	/**
-	 * Sets the value.
-	 *
-	 * @param value the new value
-	 */
-	public void setValue(Object value) {
-		this.value = value;
-	}
-	
-	
-	
-	
+
 }

@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.common;
+package co.aurasphere.botmill.core;
 
 /**
  * Enumeration that indicates which policy a bot will use when

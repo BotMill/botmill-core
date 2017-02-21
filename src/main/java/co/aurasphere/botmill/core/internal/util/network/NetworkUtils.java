@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.common.internal.util.network;
+package co.aurasphere.botmill.core.internal.util.network;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

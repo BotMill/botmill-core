@@ -21,6 +21,8 @@ public class DataAdapterTest {
 		mapAdapter.putData("123", KeyValuePairBuilder.getInstance().setKey("key1").setValue("value").build());
 		mapAdapter.putData("123", KeyValuePairBuilder.getInstance().setKey("key2").setValue("value1").build());
 
-		assertEquals("value", mapAdapter.getData("123", "key1").getValue().toString());
+		mapAdapter.putData("123", KeyValuePairBuilder.getInstance().setKey("email").setValue("alvin@reyes.com").build());
+		mapAdapter.putData("123", KeyValuePairBuilder.getInstance().setKey("email").setValue("alvin@reyes.com").build());
+		assertEquals("alvin@reyes.com", mapAdapter.getData("123", "email").getValue().toString());
 	}
 }

@@ -23,21 +23,30 @@
  */
 package co.aurasphere.botmill.core.datastore.adapter;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HSQLAdapter.
  */
-public class HSQLAdapter extends DataAdapter {
-
+public class HSQLAdapter extends DataAdapter<Connection> {
+	
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#setup()
 	 */
 	@Override
 	public void setup() {
-		// TODO Auto-generated method stub
+		try {
+			//	TODO: Grabe the database, user and password from Encrypted Properties
+			Connection c = DriverManager.getConnection("jdbc:hsqldb:file:/opt/db/testdb", "SA", "");
+			this.source = c;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/* (non-Javadoc)

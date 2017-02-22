@@ -23,9 +23,56 @@
  */
 package co.aurasphere.botmill.core.datastore.adapter;
 
+import java.sql.Connection;
+
+import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
+import co.aurasphere.botmill.core.datastore.model.Session;
+
 /**
  * The Class RdbmsAdapter.
  */
-public class RdbmsAdapter  {
+public class RdbmsAdapter extends DataAdapter<Connection>  {
+
+	@Override
+	public void setup() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Session buildSession(String identifier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void destroySession(String identifier) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Session getSession(String identifier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Session putData(String identifier, KeyValuePair keyValuePair) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void removeData(String identifier, String key) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public KeyValuePair getData(String identifier, String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

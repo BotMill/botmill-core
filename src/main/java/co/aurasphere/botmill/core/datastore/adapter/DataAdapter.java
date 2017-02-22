@@ -6,13 +6,12 @@ package co.aurasphere.botmill.core.datastore.adapter;
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class DataAdapter.
  */
 public abstract class DataAdapter<T> {
 	
-	T data;
+	T source;
 	
 	/**
 	 * Instantiates a new data adapter.

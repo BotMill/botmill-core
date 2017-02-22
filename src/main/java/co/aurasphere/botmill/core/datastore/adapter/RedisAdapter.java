@@ -23,13 +23,16 @@
  */
 package co.aurasphere.botmill.core.datastore.adapter;
 
+
+
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
+import redis.clients.jedis.Jedis;
 
 /**
  * The Class RedisAdapter.
  */
-public class RedisAdapter extends DataAdapter {
+public class RedisAdapter extends DataAdapter<Jedis> {
 
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#setup()

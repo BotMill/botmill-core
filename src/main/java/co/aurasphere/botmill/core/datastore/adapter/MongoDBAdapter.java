@@ -33,9 +33,10 @@ import co.aurasphere.botmill.core.datastore.model.Session;
 /**
  * The Class MongoDBAdapter.
  */
-public class MongoDBAdapter extends DataAdapter {
+public class MongoDBAdapter extends DataAdapter<MongoOperations> {
 
 	/** The mongodb ops. */
+	//	remove
 	private MongoOperations mongodbOps;
 
 	/* (non-Javadoc)
@@ -43,6 +44,8 @@ public class MongoDBAdapter extends DataAdapter {
 	 */
 	@Override
 	public void setup() {
+		
+		this.source = mongodbOps;
 
 //		MongoCredential credential = MongoCredential.createCredential(username, databaseName, password.toCharArray());
 //		ServerAddress serverAddress = new ServerAddress(server, port);

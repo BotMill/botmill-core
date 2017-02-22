@@ -23,6 +23,113 @@
  */
 package co.aurasphere.botmill.core.datastore.adapter;
 
-public class MapAdapter {
-	//TODO: Create the Map Adapter Class
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
+import co.aurasphere.botmill.core.datastore.model.Session;
+
+
+/**
+ * The Class MapAdapter.
+ */
+public class MapAdapter extends DataAdapter<ConcurrentHashMap<String, Session>> {
+
+	
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#setup()
+	 */
+	@Override
+	public void setup() {
+		data = new ConcurrentHashMap<String, Session>();
+	}
+	
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#buildSession(java.lang.String)
+	 */
+	@Override
+	public Session buildSession(String identifier) {
+		Session session = new Session();
+		session.setIdentifier(identifier);
+		session.setKeyValuePair(new ArrayList<KeyValuePair>());
+		data.put(identifier, session);
+		
+		if(data.containsKey(identifier)) {
+			return data.get(identifier);
+		}
+		return session;
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getSession(java.lang.String)
+	 */
+	@Override
+	public Session getSession(String identifier) {
+		if(data.containsKey(identifier)) {
+			return data.get(identifier);
+		}
+		return null;
+	}
+	
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#destroySession(java.lang.String)
+	 */
+	@Override
+	public void destroySession(String identifier) {
+		if(data.containsKey(identifier)) {
+			data.remove(identifier);
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#putData(java.lang.String, co.aurasphere.botmill.core.datastore.model.KeyValuePair)
+	 */
+	@Override
+	public Session putData(String identifier, KeyValuePair keyValuePair) {
+		if(data.containsKey(identifier)) {
+			data.get(identifier).addKeyValuePair(keyValuePair);
+			return data.get(identifier);
+		}
+		return null;
+	}
+	
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#removeData(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void removeData(String identifier, String key) {
+		if(data.containsKey(identifier)) {
+			for(KeyValuePair keyValuePair: data.get(identifier).getKeyValuePairs()) {
+				if(keyValuePair.getKey().equals(key)) {
+					data.get(identifier).getKeyValuePairs().remove(keyValuePair);
+					break;
+				}
+			}
+		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getData(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public KeyValuePair getData(String identifier, String key) {
+		if(data.containsKey(identifier)) {
+			for(KeyValuePair keyValuePair: data.get(identifier).getKeyValuePairs()) {
+				if(keyValuePair.getKey().equals(key)) {
+					return keyValuePair;
+				}
+			}
+		}
+		return null;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return data.toString();
+	}
+
 }

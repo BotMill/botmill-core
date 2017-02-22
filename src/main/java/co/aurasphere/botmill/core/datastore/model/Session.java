@@ -47,7 +47,7 @@ public class Session implements Serializable {
 	
 	/** The key value pair. */
 	@SerializedName("keyvaluepair")
-	private List<KeyValuePair> keyValuePair = new ArrayList<KeyValuePair>();
+	private List<KeyValuePair> keyValuePairs = new ArrayList<KeyValuePair>();
 
 	/**
 	 * Gets the id.
@@ -72,17 +72,17 @@ public class Session implements Serializable {
 	 *
 	 * @return the key value pair
 	 */
-	public List<KeyValuePair> getKeyValuePair() {
-		return keyValuePair;
+	public List<KeyValuePair> getKeyValuePairs() {
+		return keyValuePairs;
 	}
 
 	/**
 	 * Sets the key value pair.
 	 *
-	 * @param keyValuePair the new key value pair
+	 * @param keyValuePairs the new key value pair
 	 */
-	public void setKeyValuePair(List<KeyValuePair> keyValuePair) {
-		this.keyValuePair = keyValuePair;
+	public void setKeyValuePair(List<KeyValuePair> keyValuePairs) {
+		this.keyValuePairs = keyValuePairs;
 	}
 	
 	/**
@@ -91,13 +91,13 @@ public class Session implements Serializable {
 	 * @param keyValuePair the key value pair
 	 */
 	public void addKeyValuePair(KeyValuePair keyValuePair) {
-		for(KeyValuePair kp:this.keyValuePair) {
+		for(KeyValuePair kp:this.keyValuePairs) {
 			if(kp.getKey().equals(keyValuePair.getKey())) {
 				kp.setValue(keyValuePair.getValue());
 				return;
 			}
 		}
-		this.keyValuePair.add(keyValuePair);
+		this.keyValuePairs.add(keyValuePair);
 	}
 
 	/**

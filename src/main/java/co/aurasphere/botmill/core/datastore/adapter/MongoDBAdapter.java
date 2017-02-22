@@ -23,6 +23,110 @@
  */
 package co.aurasphere.botmill.core.datastore.adapter;
 
-public class MongoDBAdapter {
-	//TODO: Create the MongoDB Adapter Class
+import java.util.ArrayList;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
+import co.aurasphere.botmill.core.datastore.model.Session;
+
+/**
+ * The Class MongoDBAdapter.
+ */
+public class MongoDBAdapter extends DataAdapter {
+
+	/** The mongodb ops. */
+	private MongoOperations mongodbOps;
+
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#setup()
+	 */
+	@Override
+	public void setup() {
+
+//		MongoCredential credential = MongoCredential.createCredential(username, databaseName, password.toCharArray());
+//		ServerAddress serverAddress = new ServerAddress(server, port);
+//		MongoClient mongoClient = new MongoClient(serverAddress, Arrays.asList(credential));
+//		SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongoClient, databaseName);
+//
+//		MongoTemplate mongoTemplate = new MongoTemplate(simpleMongoDbFactory);
+//		mongodbOps = (MongoOperations) mongoTemplate;
+	}
+	
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#buildSession(java.lang.String)
+	 */
+	@Override
+	public Session buildSession(String identifier) {
+
+		Query q = new Query(Criteria.where("identifier").is(identifier));
+		Session sessionResult = mongodbOps.findOne(q, Session.class);
+
+		if (sessionResult == null) {
+			Session session = new Session();
+			session.setIdentifier(identifier);
+			session.setKeyValuePair(new ArrayList<KeyValuePair>());
+			mongodbOps.save(session);
+
+			Query newSessionQ = new Query(Criteria.where("identifier").is(identifier));
+			Session newSession = mongodbOps.findOne(newSessionQ, Session.class);
+			return newSession;
+		}
+
+		return sessionResult;
+	}
+
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#destroySession(java.lang.String)
+	 */
+	@Override
+	public void destroySession(String identifier) {
+		Query q = new Query(Criteria.where("identifier").is(identifier));
+		mongodbOps.remove(q, Session.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#putData(java.lang.String, co.aurasphere.botmill.core.datastore.model.KeyValuePair)
+	 */
+	@Override
+	public Session putData(String identifier, KeyValuePair keyValuePair) {
+		// create a session if none exist.
+		buildSession(identifier);
+
+		Query q = new Query(Criteria.where("identifier").is(identifier));
+		Session sessionResult = mongodbOps.findOne(q, Session.class);
+		sessionResult.addKeyValuePair(keyValuePair);
+		mongodbOps.save(sessionResult);
+		return sessionResult;
+	}
+
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#removeData(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public void removeData(String identifier, String key) {
+		Query q = new Query(Criteria.where("identifier").is(identifier).and("KeyValuePair.key").is(key));
+		mongodbOps.remove(q, Session.class);
+	}
+
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getSession(java.lang.String)
+	 */
+	@Override
+	public Session getSession(String identifier) {
+		Query q = new Query(Criteria.where("identifier").is(identifier));
+		Session sessionResult = mongodbOps.findOne(q, Session.class);
+		return sessionResult;
+	}
+
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getData(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public KeyValuePair getData(String identifier, String key) {
+		Query q = new Query(Criteria.where("identifier").is(identifier).and("KeyValuePair.key").is(key));
+		Session sessionResult = mongodbOps.findOne(q, Session.class);
+		return sessionResult.getKeyValuePairs().get(0);
+	}
+
 }

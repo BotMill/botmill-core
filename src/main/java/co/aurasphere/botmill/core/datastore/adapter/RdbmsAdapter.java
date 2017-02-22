@@ -23,46 +23,9 @@
  */
 package co.aurasphere.botmill.core.datastore.adapter;
 
-// TODO: Auto-generated Javadoc
 /**
- * Enum that represents all the adapter types available.
- * 
- * @author Alvin P. Reyes
+ * The Class RdbmsAdapter.
  */
-public enum AdapterType {
-	
-	/**
-	 * The map.
-	 */
-	MAP,
-	
-	/**
-	 * The hsql.
-	 */
-	HSQL,
-	
-	/**
-	 * The mongodb.
-	 */
-	MONGODB,
-	
-	/**
-	 * The redis.
-	 */
-	REDIS,
-	
-	/**
-	 * The mysql.
-	 */
-	MYSQL,
-	
-	/**
-	 * The oracle.
-	 */
-	ORACLE,
-	
-	/**
-	 * The mssql.
-	 */
-	MSSQL
+public class RdbmsAdapter  {
+
 }

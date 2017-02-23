@@ -30,38 +30,15 @@ package co.aurasphere.botmill.core.datastore.adapter;
  */
 public enum AdapterType {
 	
-	/**
-	 * The map.
-	 */
+	/** The map. */
 	MAP,
 	
-	/**
-	 * The hsql.
-	 */
+	/** The hsql. */
 	HSQL,
 	
-	/**
-	 * The mongodb.
-	 */
+	/** The mongodb. */
 	MONGODB,
 	
-	/**
-	 * The redis.
-	 */
-	REDIS,
-	
-	/**
-	 * The mysql.
-	 */
-	MYSQL,
-	
-	/**
-	 * The oracle.
-	 */
-	ORACLE,
-	
-	/**
-	 * The mssql.
-	 */
-	MSSQL
+	/** The rbdms. */
+	RBDMS
 }

@@ -31,45 +31,59 @@ import co.aurasphere.botmill.core.datastore.model.Session;
 /**
  * The Class RdbmsAdapter.
  */
-public class RdbmsAdapter extends DataAdapter<Connection>  {
+public class RdbmsAdapter extends BotDataAdapter<Connection>  {
 
-	@Override
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#setup()
+	 */
 	public void setup() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#buildSession(java.lang.String)
+	 */
 	public Session buildSession(String identifier) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#destroySession(java.lang.String)
+	 */
 	public void destroySession(String identifier) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getSession(java.lang.String)
+	 */
 	public Session getSession(String identifier) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#putData(java.lang.String, co.aurasphere.botmill.core.datastore.model.KeyValuePair)
+	 */
 	public Session putData(String identifier, KeyValuePair keyValuePair) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#removeData(java.lang.String, java.lang.String)
+	 */
 	public void removeData(String identifier, String key) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	/* (non-Javadoc)
+	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getData(java.lang.String, java.lang.String)
+	 */
 	public KeyValuePair getData(String identifier, String key) {
 		// TODO Auto-generated method stub
 		return null;

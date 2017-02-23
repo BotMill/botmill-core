@@ -60,8 +60,8 @@ public class BotMillServlet extends HttpServlet {
 	 */
 	@Override
 	public void init() {
-		ConfigurationUtils.loadBotDefinitions();
 		ConfigurationUtils.loadConfigurationFile();
+		ConfigurationUtils.loadBotDefinitions();
 		logger.info("BotMill servlet started.");
 	}
 	

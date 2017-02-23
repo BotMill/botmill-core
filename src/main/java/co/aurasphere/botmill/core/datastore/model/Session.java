@@ -30,6 +30,7 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 
+
 /**
  * The Class Session.
  */
@@ -46,7 +47,7 @@ public class Session implements Serializable {
 	private String identifier;
 	
 	/** The key value pair. */
-	@SerializedName("keyvaluepair")
+	@SerializedName("keyValuePairs")
 	private List<KeyValuePair> keyValuePairs = new ArrayList<KeyValuePair>();
 
 	/**

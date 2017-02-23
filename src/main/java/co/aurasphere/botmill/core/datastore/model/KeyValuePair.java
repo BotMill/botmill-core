@@ -25,6 +25,7 @@ package co.aurasphere.botmill.core.datastore.model;
 
 import java.io.Serializable;
 
+
 /**
  * The Class KeyValuePair.
  */

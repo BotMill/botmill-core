@@ -30,16 +30,14 @@ import java.util.concurrent.ConcurrentMap;
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
 
-
 /**
  * The Class MapAdapter.
  */
-public class MapAdapter extends DataAdapter<ConcurrentMap<String, Session>> {
+public class MapAdapter extends BotDataAdapter<ConcurrentMap<String, Session>> {
 
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#setup()
 	 */
-	@Override
 	public void setup() {
 		source = new ConcurrentHashMap<String, Session>();
 	}
@@ -47,7 +45,6 @@ public class MapAdapter extends DataAdapter<ConcurrentMap<String, Session>> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#buildSession(java.lang.String)
 	 */
-	@Override
 	public Session buildSession(String identifier) {
 		Session session = new Session();
 		session.setIdentifier(identifier);
@@ -64,7 +61,6 @@ public class MapAdapter extends DataAdapter<ConcurrentMap<String, Session>> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getSession(java.lang.String)
 	 */
-	@Override
 	public Session getSession(String identifier) {
 		if(source.containsKey(identifier)) {
 			return source.get(identifier);
@@ -75,7 +71,6 @@ public class MapAdapter extends DataAdapter<ConcurrentMap<String, Session>> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#destroySession(java.lang.String)
 	 */
-	@Override
 	public void destroySession(String identifier) {
 		if(source.containsKey(identifier)) {
 			source.remove(identifier);
@@ -85,7 +80,6 @@ public class MapAdapter extends DataAdapter<ConcurrentMap<String, Session>> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#putData(java.lang.String, co.aurasphere.botmill.core.datastore.model.KeyValuePair)
 	 */
-	@Override
 	public Session putData(String identifier, KeyValuePair keyValuePair) {
 		if(source.containsKey(identifier)) {
 			source.get(identifier).addKeyValuePair(keyValuePair);
@@ -97,7 +91,6 @@ public class MapAdapter extends DataAdapter<ConcurrentMap<String, Session>> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#removeData(java.lang.String, java.lang.String)
 	 */
-	@Override
 	public void removeData(String identifier, String key) {
 		if(source.containsKey(identifier)) {
 			for(KeyValuePair keyValuePair: source.get(identifier).getKeyValuePairs()) {
@@ -112,7 +105,6 @@ public class MapAdapter extends DataAdapter<ConcurrentMap<String, Session>> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getData(java.lang.String, java.lang.String)
 	 */
-	@Override
 	public KeyValuePair getData(String identifier, String key) {
 		if(source.containsKey(identifier)) {
 			for(KeyValuePair keyValuePair: source.get(identifier).getKeyValuePairs()) {

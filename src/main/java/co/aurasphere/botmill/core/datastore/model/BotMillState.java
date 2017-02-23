@@ -23,10 +23,42 @@
  */
 package co.aurasphere.botmill.core.datastore.model;
 
+/**
+ * The Interface BotMillState.
+ */
 public interface BotMillState {
+	
+	/**
+	 * Builds the session.
+	 *
+	 * @param identifier the identifier
+	 * @return the session
+	 */
 	public Session buildSession(String identifier);
+	
+	/**
+	 * Destroy session.
+	 *
+	 * @param identifier the identifier
+	 */
 	public void destroySession(String identifier);
+	
+	/**
+	 * Sets the variable.
+	 *
+	 * @param identifier the identifier
+	 * @param keyValuePair the key value pair
+	 * @return the session
+	 */
 	public Session setVariable(String identifier, KeyValuePair keyValuePair);
+	
+	/**
+	 * Gets the variable.
+	 *
+	 * @param identifier the identifier
+	 * @param key the key
+	 * @return the variable
+	 */
 	public KeyValuePair getVariable(String identifier, String key);
 	
 }

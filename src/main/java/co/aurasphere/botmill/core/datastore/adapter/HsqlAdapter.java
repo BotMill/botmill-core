@@ -33,15 +33,13 @@ import co.aurasphere.botmill.core.datastore.model.Session;
 /**
  * The Class HSQLAdapter.
  */
-public class HSQLAdapter extends DataAdapter<Connection> {
+public class HsqlAdapter extends BotDataAdapter<Connection> {
 	
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#setup()
 	 */
-	@Override
 	public void setup() {
 		try {
-			//	TODO: Grabe the database, user and password from Encrypted Properties
 			Connection c = DriverManager.getConnection("jdbc:hsqldb:file:/opt/db/testdb", "SA", "");
 			this.source = c;
 		} catch (SQLException e) {
@@ -52,7 +50,6 @@ public class HSQLAdapter extends DataAdapter<Connection> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#buildSession(java.lang.String)
 	 */
-	@Override
 	public Session buildSession(String identifier) {
 		// TODO Auto-generated method stub
 		return null;
@@ -61,7 +58,6 @@ public class HSQLAdapter extends DataAdapter<Connection> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#destroySession(java.lang.String)
 	 */
-	@Override
 	public void destroySession(String identifier) {
 		// TODO Auto-generated method stub
 		
@@ -70,7 +66,6 @@ public class HSQLAdapter extends DataAdapter<Connection> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#putData(java.lang.String, co.aurasphere.botmill.core.datastore.model.KeyValuePair)
 	 */
-	@Override
 	public Session putData(String identifier, KeyValuePair keyValuePair) {
 		// TODO Auto-generated method stub
 		return null;
@@ -79,7 +74,6 @@ public class HSQLAdapter extends DataAdapter<Connection> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#removeData(java.lang.String, java.lang.String)
 	 */
-	@Override
 	public void removeData(String identifier, String key) {
 		// TODO Auto-generated method stub
 	}
@@ -87,7 +81,6 @@ public class HSQLAdapter extends DataAdapter<Connection> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getSession(java.lang.String)
 	 */
-	@Override
 	public Session getSession(String identifier) {
 		// TODO Auto-generated method stub
 		return null;
@@ -96,7 +89,6 @@ public class HSQLAdapter extends DataAdapter<Connection> {
 	/* (non-Javadoc)
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#getData(java.lang.String, java.lang.String)
 	 */
-	@Override
 	public KeyValuePair getData(String identifier, String key) {
 		// TODO Auto-generated method stub
 		return null;

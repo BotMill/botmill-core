@@ -23,6 +23,7 @@
  */
 package co.aurasphere.botmill.core.internal.exception;
 
+
 /**
  * Exception used for BotMill configuration errors.
  * 

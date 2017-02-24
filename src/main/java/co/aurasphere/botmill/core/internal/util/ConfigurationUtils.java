@@ -27,6 +27,9 @@ import java.lang.reflect.Modifier;
 import java.util.Properties;
 import java.util.Set;
 
+import org.jasypt.encryption.pbe.PBEStringCleanablePasswordEncryptor;
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.properties.EncryptableProperties;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +54,7 @@ public class ConfigurationUtils {
 	/**
 	 * The BotMill configuration.
 	 */
-	private static Properties configuration = new Properties();
+	private static Properties configuration;
 
 	/**
 	 * The name of the BotMill properties file with the platform configuration.
@@ -63,8 +66,7 @@ public class ConfigurationUtils {
 	/**
 	 * Instantiates a new ConfigurationUtils.
 	 */
-	private ConfigurationUtils() {
-	}
+	private ConfigurationUtils() {}
 
 	/**
 	 * Loads all classes extending {@link BotDefinition} in the classpath.
@@ -118,6 +120,24 @@ public class ConfigurationUtils {
 	 */
 	public static void loadConfigurationFile() {
 		try {
+			configuration = new Properties();
+			configuration.load(ConfigurationUtils.class.getClassLoader()
+					.getResourceAsStream(CONFIG_PATH));
+		} catch (Exception e) {
+			logger.error("Error while loading BotMill properties file ({})",
+					CONFIG_PATH, e);
+		}
+	}
+	
+	/**
+	 * Loads the Encrypted configuration BotMill configuration properties file. In order
+	 * for this to work, you need a botmill.properties file on the classpath. If
+	 * you have a Maven project, just make sure to place it in the resources
+	 * folder.
+	 */
+	public static void loadEncryptedConfigurationFile(PBEStringCleanablePasswordEncryptor encryptor) {
+		try {
+			configuration = new EncryptableProperties(encryptor);
 			configuration.load(ConfigurationUtils.class.getClassLoader()
 					.getResourceAsStream(CONFIG_PATH));
 		} catch (Exception e) {

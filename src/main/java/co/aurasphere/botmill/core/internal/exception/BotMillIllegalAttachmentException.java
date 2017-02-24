@@ -24,6 +24,7 @@
 package co.aurasphere.botmill.core.internal.exception;
 
 
+
 /**
  * Exception used to handle an attachment that's not permitted for a
  * response.

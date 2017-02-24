@@ -33,13 +33,26 @@ import co.aurasphere.botmill.core.datastore.model.KeyValuePairBuilder;
 import co.aurasphere.botmill.core.datastore.model.Session;
 import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
+
+/**
+ * The Class BotMillSession.
+ */
 public class BotMillSession {
 	
+	/** The Constant logger. */
 	private static final Logger logger = LoggerFactory.getLogger(BotMillSession.class);
 	
+	/** The data adapter. */
 	private static DataAdapter dataAdapter;
+	
+	/** The instance. */
 	private static BotMillSession instance;
 	
+	/**
+	 * Gets the single instance of BotMillSession.
+	 *
+	 * @return single instance of BotMillSession
+	 */
 	public static BotMillSession getInstance() {
 		if (instance == null) {
 			//	Making sure we only have one instance.
@@ -48,6 +61,9 @@ public class BotMillSession {
 		return instance;
 	}
 	
+	/**
+	 * Instantiates a new bot mill session.
+	 */
 	private BotMillSession() {
 		//	check the data adapter type from the properties.
 		//	map, hsql, mongodb, rdbms
@@ -66,6 +82,11 @@ public class BotMillSession {
 		}
 	}
 	
+	/**
+	 * Define data adapter.
+	 *
+	 * @param adapterType the adapter type
+	 */
 	private void defineDataAdapter(DataAdapterType adapterType) {
 		switch (adapterType) {
 		case MAP:
@@ -85,30 +106,74 @@ public class BotMillSession {
 		}
 	}
 
+	/**
+	 * Builds the session.
+	 *
+	 * @param identifier the identifier
+	 * @return the session
+	 */
 	public Session buildSession(String identifier){
 		return dataAdapter.buildSession(identifier);
 	}
 	
+	/**
+	 * Destroy session.
+	 *
+	 * @param identifier the identifier
+	 */
 	public void destroySession(String identifier) {
 		dataAdapter.destroySession(identifier);
 	}
 
+	/**
+	 * Gets the session.
+	 *
+	 * @param identifier the identifier
+	 * @return the session
+	 */
 	public Session getSession(String identifier) {
 		return dataAdapter.getSession(identifier);
 	}
 	
+	/**
+	 * Put session data.
+	 *
+	 * @param identifier the identifier
+	 * @param keyValuePair the key value pair
+	 * @return the session
+	 */
 	public Session putSessionData(String identifier, KeyValuePair keyValuePair) {
 		return dataAdapter.putData(identifier,keyValuePair);
 	}
 	
+	/**
+	 * Removes the session data.
+	 *
+	 * @param identifier the identifier
+	 * @param key the key
+	 */
 	public void removeSessionData(String identifier, String key) {
 		dataAdapter.removeData(identifier,key);
 	}
 	
+	/**
+	 * Gets the session data.
+	 *
+	 * @param identifier the identifier
+	 * @param key the key
+	 * @return the session data
+	 */
 	public KeyValuePair getSessionData(String identifier, String key) {
 		return dataAdapter.getData(identifier,key);
 	}
 	
+	/**
+	 * Adds the key value pair.
+	 *
+	 * @param key the key
+	 * @param value the value
+	 * @return the key value pair
+	 */
 	public KeyValuePair addKeyValuePair(String key, String value) {
 		return KeyValuePairBuilder.getInstance().setKey(key).setValue(value).build();
 	}

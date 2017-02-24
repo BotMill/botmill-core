@@ -68,7 +68,7 @@ public class MongoDBAdapter extends BotDataAdapter<MongoOperations> {
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#buildSession(java.lang.String)
 	 */
 	public Session buildSession(String identifier) {
-
+		
 		Query q = new Query(Criteria.where("identifier").is(identifier));
 		Session sessionResult = this.source.findOne(q, Session.class);
 

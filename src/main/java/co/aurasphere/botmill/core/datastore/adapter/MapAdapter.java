@@ -64,8 +64,10 @@ public class MapAdapter extends BotDataAdapter<ConcurrentMap<String, Session>> {
 	public Session getSession(String identifier) {
 		if(source.containsKey(identifier)) {
 			return source.get(identifier);
+		}else {
+			//	creates one.
+			return buildSession(identifier);
 		}
-		return null;
 	}
 	
 	/* (non-Javadoc)

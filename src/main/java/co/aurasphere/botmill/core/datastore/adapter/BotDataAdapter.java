@@ -24,4 +24,8 @@ public abstract class BotDataAdapter<T> implements DataAdapter {
 	public BotDataAdapter() {
 		this.setup();
 	}
+	
+	public T getDataSource() {
+		return source;
+	}
 }

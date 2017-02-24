@@ -25,15 +25,12 @@ package co.aurasphere.botmill.core.base;
 
 import java.io.IOException;
 import java.io.Reader;
-
 import javax.servlet.http.HttpServlet;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import co.aurasphere.botmill.core.BotDefinition;
-import co.aurasphere.botmill.core.BotMillSession;
 import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
+
 
 /**
  * Base BotMill servlet with shared behavior.

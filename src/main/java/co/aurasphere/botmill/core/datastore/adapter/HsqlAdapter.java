@@ -27,8 +27,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.sun.media.jfxmedia.logging.Logger;
+
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
+import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
 /**
  * The Class HSQLAdapter.
@@ -40,10 +43,18 @@ public class HsqlAdapter extends BotDataAdapter<Connection> {
 	 */
 	public void setup() {
 		try {
-			Connection c = DriverManager.getConnection("jdbc:hsqldb:file:/opt/db/testdb", "SA", "");
+			Class.forName(ConfigurationUtils.getConfiguration().getProperty("hsql.driver"));
+			Connection c = DriverManager.getConnection(
+					ConfigurationUtils.getConfiguration().getProperty("hsql.conn.url"), 
+					ConfigurationUtils.getConfiguration().getProperty("hsql.username"), 
+					ConfigurationUtils.getConfiguration().getProperty("hsql.password"));
 			this.source = c;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			logger.error("SQL Exception");
+		}catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			logger.error("Driver not found in classpath");
 		}
 	}
 

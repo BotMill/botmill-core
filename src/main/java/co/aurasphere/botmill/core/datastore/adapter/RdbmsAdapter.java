@@ -24,9 +24,12 @@
 package co.aurasphere.botmill.core.datastore.adapter;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
+import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
 /**
  * The Class RdbmsAdapter.
@@ -37,7 +40,20 @@ public class RdbmsAdapter extends BotDataAdapter<Connection>  {
 	 * @see co.aurasphere.botmill.core.datastore.adapter.DataAdapter#setup()
 	 */
 	public void setup() {
-		// TODO Auto-generated method stub
+		try {
+			Class.forName(ConfigurationUtils.getConfiguration().getProperty("rdbms.driver"));
+			Connection c = DriverManager.getConnection(
+					ConfigurationUtils.getConfiguration().getProperty("rdbms.conn.url"), 
+					ConfigurationUtils.getConfiguration().getProperty("rdbms.username"), 
+					ConfigurationUtils.getConfiguration().getProperty("rdbms.password"));
+			this.source = c;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			logger.error("SQL Exception");
+		}catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			logger.error("Driver not found in classpath");
+		}
 		
 	}
 

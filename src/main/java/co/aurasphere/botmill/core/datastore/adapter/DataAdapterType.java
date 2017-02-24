@@ -28,7 +28,7 @@ package co.aurasphere.botmill.core.datastore.adapter;
  * 
  * @author Alvin P. Reyes
  */
-public enum AdapterType {
+public enum DataAdapterType {
 	
 	/** The map. */
 	MAP,

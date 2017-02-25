@@ -37,6 +37,7 @@ import org.slf4j.LoggerFactory;
 import co.aurasphere.botmill.core.BotDefinition;
 import co.aurasphere.botmill.core.internal.exception.BotMillConfigurationException;
 
+
 /**
  * Utility class for handling BotMill configuration.
  * 
@@ -54,7 +55,7 @@ public class ConfigurationUtils {
 	/**
 	 * The BotMill configuration.
 	 */
-	private static Properties configuration;
+	private static Properties configuration = new Properties();
 
 	/**
 	 * The name of the BotMill properties file with the platform configuration.
@@ -134,6 +135,8 @@ public class ConfigurationUtils {
 	 * for this to work, you need a botmill.properties file on the classpath. If
 	 * you have a Maven project, just make sure to place it in the resources
 	 * folder.
+	 *
+	 * @param encryptor the encryptor
 	 */
 	public static void loadEncryptedConfigurationFile(PBEStringCleanablePasswordEncryptor encryptor) {
 		try {

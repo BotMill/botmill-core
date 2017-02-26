@@ -33,7 +33,6 @@ import co.aurasphere.botmill.core.datastore.model.KeyValuePairBuilder;
 import co.aurasphere.botmill.core.datastore.model.Session;
 import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
-
 /**
  * The Class BotMillSession.
  */

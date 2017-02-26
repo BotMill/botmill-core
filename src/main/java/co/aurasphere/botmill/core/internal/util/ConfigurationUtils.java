@@ -26,15 +26,13 @@ package co.aurasphere.botmill.core.internal.util;
 import java.lang.reflect.Modifier;
 import java.util.Properties;
 import java.util.Set;
-
 import org.jasypt.encryption.pbe.PBEStringCleanablePasswordEncryptor;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.properties.EncryptableProperties;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import co.aurasphere.botmill.core.BotDefinition;
+import co.aurasphere.botmill.core.base.Bot;
 import co.aurasphere.botmill.core.internal.exception.BotMillConfigurationException;
 
 
@@ -85,7 +83,12 @@ public class ConfigurationUtils {
 
 		// Tries to load and instantiate the bot definitions.
 		for (Class<? extends BotDefinition> defClass : botDefinitions) {
-
+			
+			//	Check if it's annotated too.
+			if(!defClass.isAnnotationPresent(Bot.class)) {
+				continue;
+			}
+			
 			// If the class is abstract, skips it.
 			if (Modifier.isAbstract(defClass.getModifiers())) {
 				continue;

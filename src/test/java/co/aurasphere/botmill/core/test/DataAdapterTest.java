@@ -27,6 +27,7 @@ package co.aurasphere.botmill.core.test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,9 +36,6 @@ import co.aurasphere.botmill.core.datastore.adapter.MapAdapter;
 import co.aurasphere.botmill.core.datastore.adapter.MongoDBAdapter;
 import co.aurasphere.botmill.core.datastore.model.KeyValuePairBuilder;
 import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
-import jdk.nashorn.internal.ir.annotations.Ignore;
-
-
 
 /**
  * The Class DataAdapterTest.

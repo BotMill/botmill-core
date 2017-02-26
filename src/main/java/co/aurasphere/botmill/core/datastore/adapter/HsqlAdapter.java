@@ -27,8 +27,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.sun.media.jfxmedia.logging.Logger;
-
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
 import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;

@@ -33,8 +33,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import co.aurasphere.botmill.core.BotDefinition;
 import co.aurasphere.botmill.core.base.Bot;
+import co.aurasphere.botmill.core.base.BotEncryption;
 import co.aurasphere.botmill.core.internal.exception.BotMillConfigurationException;
-
 
 /**
  * Utility class for handling BotMill configuration.
@@ -54,6 +54,9 @@ public class ConfigurationUtils {
 	 * The BotMill configuration.
 	 */
 	private static Properties configuration = new Properties();
+	
+	/** The encrypted configuration. */
+	private static EncryptableProperties encryptedConfiguration;
 
 	/**
 	 * The name of the BotMill properties file with the platform configuration.
@@ -115,6 +118,24 @@ public class ConfigurationUtils {
 			}
 		}
 	}
+	
+	/**
+	 * Load encrypted configuration properties.
+	 */
+	public static void loadEncryptedConfigurationProperties() {
+		
+		Reflections ref = new Reflections();
+		Set<Class<?>> botEncryptions = ref.getTypesAnnotatedWith(BotEncryption.class);
+		for(Class<?> botEncryption : botEncryptions) {
+			try {
+				botEncryption.newInstance();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	/**
 	 * Loads the configuration BotMill configuration properties file. In order
@@ -124,7 +145,9 @@ public class ConfigurationUtils {
 	 */
 	public static void loadConfigurationFile() {
 		try {
-			configuration = new Properties();
+			if(configuration == null) {
+				configuration = new Properties();
+			}
 			configuration.load(ConfigurationUtils.class.getClassLoader()
 					.getResourceAsStream(CONFIG_PATH));
 		} catch (Exception e) {
@@ -139,18 +162,43 @@ public class ConfigurationUtils {
 	 * you have a Maven project, just make sure to place it in the resources
 	 * folder.
 	 *
+	 * @param encryptor the encryptor.
+	 * @param classpathProperties the classpath properties
+	 */
+	public static void loadEncryptedConfigurationFile(PBEStringCleanablePasswordEncryptor encryptor,String classpathProperties) {
+		try {
+			if(encryptedConfiguration == null) {
+				encryptedConfiguration = new EncryptableProperties(encryptor);
+			}
+			encryptedConfiguration.load(ConfigurationUtils.class.getClassLoader()
+					.getResourceAsStream(classpathProperties));
+		} catch (Exception e) {
+			logger.error("Error while loading BotMill properties file ({})",
+					CONFIG_PATH, e);
+		}
+	}
+	
+	/**
+	 * Loads the Encrypted configuration BotMill configuration properties file. In order
+	 * for this to work, you need a botmill.properties file on the classpath. If
+	 * you have a Maven project, just make sure to place it in the resources
+	 * folder.
+	 *
 	 * @param encryptor the encryptor
 	 */
-	public static void loadEncryptedConfigurationFile(PBEStringCleanablePasswordEncryptor encryptor) {
+	public static void setEncryptedPropertiesEncryptor(PBEStringCleanablePasswordEncryptor encryptor) {
 		try {
-			configuration = new EncryptableProperties(encryptor);
-			configuration.load(ConfigurationUtils.class.getClassLoader()
+			if(encryptedConfiguration == null) {
+				encryptedConfiguration = new EncryptableProperties(encryptor);
+			}
+			encryptedConfiguration.load(ConfigurationUtils.class.getClassLoader()
 					.getResourceAsStream(CONFIG_PATH));
 		} catch (Exception e) {
 			logger.error("Error while loading BotMill properties file ({})",
 					CONFIG_PATH, e);
 		}
 	}
+
 
 	/**
 	 * Gets the {@link #configuration}.
@@ -159,6 +207,15 @@ public class ConfigurationUtils {
 	 */
 	public static Properties getConfiguration() {
 		return configuration;
+	}
+	
+	/**
+	 * Gets the {@link #encryptedConfiguration}.
+	 *
+	 * @return the {@link #encryptedConfiguration}.
+	 */
+	public static EncryptableProperties getEncryptedConfiguration() {
+		return encryptedConfiguration;
 	}
 
 	/**
@@ -169,6 +226,15 @@ public class ConfigurationUtils {
 	 */
 	public static void setConfiguration(Properties configuration) {
 		ConfigurationUtils.configuration = configuration;
+	}
+	
+	/**
+	 * Sets the {@link #encryptedConfiguration}.
+	 *
+	 * @param encryptedConfiguration the new encrypted configuration
+	 */
+	public static void setEncryptedConfiguration(EncryptableProperties encryptedConfiguration) {
+		ConfigurationUtils.encryptedConfiguration = encryptedConfiguration;
 	}
 
 	/*

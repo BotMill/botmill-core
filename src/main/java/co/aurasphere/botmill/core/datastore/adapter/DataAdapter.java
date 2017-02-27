@@ -26,7 +26,6 @@ package co.aurasphere.botmill.core.datastore.adapter;
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
 
-
 /**
  * The Interface DataAdapter.
  */

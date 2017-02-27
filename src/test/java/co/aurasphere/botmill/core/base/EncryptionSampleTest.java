@@ -1,4 +1,5 @@
 /*
+ * 
  * MIT License
  *
  * Copyright (c) 2016 BotMill.io
@@ -20,44 +21,30 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- */
-package co.aurasphere.botmill.core.internal.exception;
-
-
-
-// TODO: Auto-generated Javadoc
-/**
- * Exception used to handle an attachment that's not permitted for a
- * response.
  * 
- * @author Donato Rimenti
  */
-public class BotMillIllegalAttachmentException extends
-		IllegalArgumentException {
+package co.aurasphere.botmill.core.base;
 
+import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+
+import co.aurasphere.botmill.core.base.BotEncryption;
+import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
+
+/**
+ * The Class EncryptionSampleTest.
+ */
+@BotEncryption
+public class EncryptionSampleTest {
+	
 	/**
-	 * The serial version UID.
+	 * Instantiates a new encryption sample test.
 	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Instantiates a new BotMillIllegalAttachmentException.
-	 *
-	 * @param message
-	 *            the message.
-	 */
-	public BotMillIllegalAttachmentException(String message) {
-		super(message);
+	public EncryptionSampleTest() {
+		StandardPBEStringEncryptor enc = new StandardPBEStringEncryptor();
+		enc.setPassword("password");
+		ConfigurationUtils.setEncryptedPropertiesEncryptor(enc);
+		
+		// load a custom properties.
+		ConfigurationUtils.loadEncryptedConfigurationFile(enc, "botmill_custom.properties");
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Throwable#toString()
-	 */
-	@Override
-	public String toString() {
-		return "BotMillIllegalAttachmentException []";
-	}
-
 }

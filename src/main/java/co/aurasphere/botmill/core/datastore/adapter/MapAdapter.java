@@ -30,7 +30,6 @@ import java.util.concurrent.ConcurrentMap;
 import co.aurasphere.botmill.core.datastore.model.KeyValuePair;
 import co.aurasphere.botmill.core.datastore.model.Session;
 
-
 /**
  * The Class MapAdapter.
  */

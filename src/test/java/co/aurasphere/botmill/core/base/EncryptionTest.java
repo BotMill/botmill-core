@@ -23,38 +23,49 @@
  * SOFTWARE.
  * 
  */
-package co.aurasphere.botmill.core.internal.exception;
+package co.aurasphere.botmill.core.base;
 
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
 
+import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class FbBotMillControllerEventMisMatchException.
+ * The Class EncryptionTest.
  */
-public class BotMillMissingConfigurationException extends Exception {
-	/**
-	 * The serial version UID.
-	 */
-	private static final long serialVersionUID = 1L;
+public class EncryptionTest {
 
 	/**
-	 * Instantiates a new FbBot illegal attachment exception.
-	 *
-	 * @param message
-	 *            the message.
+	 * Setup.
 	 */
-	public BotMillMissingConfigurationException(String message) {
-		super(message);
+	@Before
+	public void setup() {
+		new EncryptionSampleTest();
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Throwable#toString()
+	
+	/**
+	 * Test encryption.
 	 */
-	@Override
-	public String toString() {
-		return "FbBotMillControllerEventMisMatchException []";
+	@Test
+	public void testEncryption() {
+		
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.user.name"));
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.api.key"));
+		
+		assertEquals("botmill", ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.user.name"));
+	}
+	
+	/**
+	 * Test encryption custom.
+	 */
+	@Test
+	public void testEncryptionCustom() {
+		
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.user.1"));
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.api.2"));
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("data.strategy"));
+		assertEquals("botmill", ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.user.name"));
 	}
 
 }

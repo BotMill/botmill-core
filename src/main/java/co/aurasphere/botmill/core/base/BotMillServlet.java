@@ -31,7 +31,6 @@ import org.slf4j.LoggerFactory;
 import co.aurasphere.botmill.core.BotDefinition;
 import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
-
 /**
  * Base BotMill servlet with shared behavior.
  * 
@@ -58,6 +57,7 @@ public class BotMillServlet extends HttpServlet {
 	 */
 	@Override
 	public void init() {
+		ConfigurationUtils.loadEncryptedConfigurationProperties();
 		ConfigurationUtils.loadConfigurationFile();
 		ConfigurationUtils.loadBotDefinitions();
 		logger.info("BotMill servlet started.");

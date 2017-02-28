@@ -23,37 +23,49 @@
  * SOFTWARE.
  * 
  */
-package co.aurasphere.botmill.core.datastore.adapter;
+package co.aurasphere.botmill.core.base;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+
+import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
 /**
- * The Class DataAdapter.
- *
- * @param <T> the generic type
+ * The Class EncryptionTest.
  */
-public abstract class BotDataAdapter<T> implements DataAdapter {
-	
-	/** The Constant logger. */
-	protected static final Logger logger = LoggerFactory.getLogger(BotDataAdapter.class);
-	
-	/** The source. */
-	T source;
-	
+public class EncryptionTest {
+
 	/**
-	 * Instantiates a new data adapter.
+	 * Setup.
 	 */
-	public BotDataAdapter() {
-		this.setup();
+	@Before
+	public void setup() {
+		new EncryptionSampleTest();
 	}
 	
 	/**
-	 * Gets the data source.
-	 *
-	 * @return the data source
+	 * Test encryption.
 	 */
-	public T getDataSource() {
-		return source;
+	@Test
+	public void testEncryption() {
+		
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.user.name"));
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.api.key"));
+		
+		assertEquals("botmill", ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.user.name"));
 	}
+	
+	/**
+	 * Test encryption custom.
+	 */
+	@Test
+	public void testEncryptionCustom() {
+		
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.user.1"));
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.api.2"));
+		System.out.println(ConfigurationUtils.getEncryptedConfiguration().getProperty("data.strategy"));
+		assertEquals("botmill", ConfigurationUtils.getEncryptedConfiguration().getProperty("kik.user.name"));
+	}
+
 }

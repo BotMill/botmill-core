@@ -21,43 +21,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.core.internal.exception;
+package co.aurasphere.botmill.core.annotation;
 
-
-
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * Exception used to handle an attachment that's not permitted for a
- * response.
- * 
- * @author Donato Rimenti
+ * The Interface Bot.
  */
-public class BotMillIllegalAttachmentException extends
-		IllegalArgumentException {
-
+@Documented
+@Target(ElementType.TYPE)
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Bot {
+	
 	/**
-	 * The serial version UID.
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Instantiates a new BotMillIllegalAttachmentException.
+	 * Meta.
 	 *
-	 * @param message
-	 *            the message.
+	 * @return the string
 	 */
-	public BotMillIllegalAttachmentException(String message) {
-		super(message);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Throwable#toString()
-	 */
-	@Override
-	public String toString() {
-		return "BotMillIllegalAttachmentException []";
-	}
-
+	String meta() default "";
 }

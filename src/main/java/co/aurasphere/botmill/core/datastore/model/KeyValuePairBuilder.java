@@ -27,6 +27,7 @@ package co.aurasphere.botmill.core.datastore.model;
 
 
 
+
 /**
  * The Class TextMessageBuilder.
  * 

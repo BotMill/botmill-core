@@ -25,8 +25,6 @@ package co.aurasphere.botmill.core.internal.util.network;
 
 import java.io.Serializable;
 
-
-
 /**
  * Base class for BotMill network operations response.
  * 

@@ -32,8 +32,8 @@ import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import co.aurasphere.botmill.core.BotDefinition;
-import co.aurasphere.botmill.core.base.Bot;
-import co.aurasphere.botmill.core.base.BotEncryption;
+import co.aurasphere.botmill.core.annotation.Bot;
+import co.aurasphere.botmill.core.annotation.BotEncryption;
 import co.aurasphere.botmill.core.internal.exception.BotMillConfigurationException;
 
 /**

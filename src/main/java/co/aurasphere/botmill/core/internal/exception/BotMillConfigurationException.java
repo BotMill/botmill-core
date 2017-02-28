@@ -25,7 +25,7 @@ package co.aurasphere.botmill.core.internal.exception;
 
 
 
-// TODO: Auto-generated Javadoc
+
 /**
  * Exception used for BotMill configuration errors.
  * 

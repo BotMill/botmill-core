@@ -27,7 +27,7 @@ package co.aurasphere.botmill.core.base;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
-import co.aurasphere.botmill.core.base.BotEncryption;
+import co.aurasphere.botmill.core.annotation.BotEncryption;
 import co.aurasphere.botmill.core.internal.util.ConfigurationUtils;
 
 /**

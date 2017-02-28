@@ -23,7 +23,6 @@
  */
 package co.aurasphere.botmill.core.datastore.adapter;
 
-
 /**
  * Enum that represents all the adapter types available.
  * 

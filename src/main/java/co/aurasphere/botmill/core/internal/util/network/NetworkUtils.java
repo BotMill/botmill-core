@@ -30,6 +30,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -38,8 +39,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
 
 /**
  * Class that contains methods that allows BotMill to communicate through the
@@ -153,6 +152,33 @@ public class NetworkUtils {
 	public static BotMillNetworkResponse get(String url) {
 		HttpGet get = new HttpGet(url);
 		return send(get);
+	}
+
+	/**
+	 * Sends a DELETE request with a body.
+	 * 
+	 * @param url
+	 *            the url where to send the DELETE request.
+	 * @param entity
+	 *            the entity to DELETE.
+	 * @return the delete response.
+	 */
+	public static BotMillNetworkResponse delete(String url, StringEntity entity) {
+		HttpDeleteWithBody delete = new HttpDeleteWithBody(url);
+		delete.setEntity(entity);
+		return send(delete);
+	}
+	
+	/**
+	 * Sends a DELETE request.
+	 * 
+	 * @param url
+	 *            the url where to send the DELETE request.
+	 * @return the delete response.
+	 */
+	public static BotMillNetworkResponse delete(String url) {
+		HttpDelete delete = new HttpDelete(url);
+		return send(delete);
 	}
 
 	/*

@@ -1,5 +1,4 @@
 /*
- * 
  * MIT License
  *
  * Copyright (c) 2016 BotMill.io
@@ -21,40 +20,22 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
  */
-package co.aurasphere.botmill.core.internal.exception;
+package co.aurasphere.botmill.core.internal.util.json;
 
-
-
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * The Class FbBotMillControllerEventMisMatchException.
+ * Annotation used to skip the Gson deserialization of a field.
+ * 
+ * @author Donato Rimenti
+ * 
  */
-public class BotMillMissingConfigurationException extends Exception {
-	/**
-	 * The serial version UID.
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * Instantiates a new FbBot illegal attachment exception.
-	 *
-	 * @param message
-	 *            the message.
-	 */
-	public BotMillMissingConfigurationException(String message) {
-		super(message);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Throwable#toString()
-	 */
-	@Override
-	public String toString() {
-		return "FbBotMillControllerEventMisMatchException []";
-	}
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface SkipDeserialization {
 
 }

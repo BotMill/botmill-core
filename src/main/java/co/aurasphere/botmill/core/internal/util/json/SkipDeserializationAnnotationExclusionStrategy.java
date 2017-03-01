@@ -21,28 +21,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.core.annotation;
+package co.aurasphere.botmill.core.internal.util.json;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 
 /**
- * The Interface Bot.
+ * ExclusionStrategy for skipping the Gson deserialization of fields annotated
+ * with {@link SkipDeserialization}.
+ * 
+ * @author Donato Rimenti
+ * 
  */
-@Documented
-@Target(ElementType.TYPE)
-@Inherited
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Bot {
-	
-	/**
-	 * Meta.
-	 *
-	 * @return the string
+public class SkipDeserializationAnnotationExclusionStrategy implements
+		ExclusionStrategy {
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.google.gson.ExclusionStrategy#shouldSkipField(com.google.gson.
+	 * FieldAttributes)
 	 */
-	String meta() default "";
+	public boolean shouldSkipField(FieldAttributes f) {
+		return f.getAnnotation(SkipDeserialization.class) != null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.google.gson.ExclusionStrategy#shouldSkipClass(java.lang.Class)
+	 */
+	public boolean shouldSkipClass(Class<?> clazz) {
+		return false;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SkipDeserializationAnnotationExclusionStrategy []";
+	}
 }

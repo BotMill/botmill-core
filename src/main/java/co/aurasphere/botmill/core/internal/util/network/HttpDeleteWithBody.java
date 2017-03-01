@@ -21,28 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.core.annotation;
+package co.aurasphere.botmill.core.internal.util.network;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apache.http.client.methods.HttpPost;
 
 /**
- * The Interface Bot.
+ * Utility class used to represent a DELETE request with a body (like a POST
+ * does).
+ * 
+ * @author Donato Rimenti
+ * 
  */
-@Documented
-@Target(ElementType.TYPE)
-@Inherited
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Bot {
-	
+public class HttpDeleteWithBody extends HttpPost {
+
 	/**
-	 * Meta.
+	 * Instantiates a new http delete with body.
 	 *
-	 * @return the string
+	 * @param url
+	 *            the url which will receive the request.
+	 * @see HttpPost#HttpPost(String)
 	 */
-	String meta() default "";
+	public HttpDeleteWithBody(String url) {
+		super(url);
+	}
+
+	/**
+	 * {@inheritDoc} Returns "DELETE".
+	 */
+	@Override
+	public String getMethod() {
+		return "DELETE";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.apache.http.client.methods.HttpRequestBase#toString()
+	 */
+	@SuppressWarnings("deprecation")
+	@Override
+	public String toString() {
+		return "HttpDeleteWithBody [headergroup=" + headergroup + ", params="
+				+ params + "]";
+	}
+
 }

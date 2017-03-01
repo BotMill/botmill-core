@@ -21,28 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package co.aurasphere.botmill.core.annotation;
+package co.aurasphere.botmill.core.internal.util.json;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.reflect.Type;
+import java.util.Calendar;
+
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
 /**
- * The Interface Bot.
+ * The Class CalendarFromTimestampJsonDeserializer.
  */
-@Documented
-@Target(ElementType.TYPE)
-@Inherited
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Bot {
-	
-	/**
-	 * Meta.
-	 *
-	 * @return the string
+public class CalendarFromTimestampJsonDeserializer implements JsonDeserializer<Calendar>{
+
+	/* (non-Javadoc)
+	 * @see com.google.gson.JsonDeserializer#deserialize(com.google.gson.JsonElement, java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
 	 */
-	String meta() default "";
+	public Calendar deserialize(JsonElement json, Type typeOfT,
+			JsonDeserializationContext context) throws JsonParseException {
+		long timestamp = json.getAsLong();
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(timestamp);
+		return calendar;
+	}
+
 }

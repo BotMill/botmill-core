@@ -23,8 +23,6 @@
  */
 package co.aurasphere.botmill.core;
 
-
-
 /**
  * An interface that represents the base configuration of a bot. To configure
  * your bot, you will need at least a class that implements this interface.

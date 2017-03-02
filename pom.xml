@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.aurasphere.botmill</groupId>
 	<artifactId>botmill-core</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>BotMill Core</name>
 	<description>Shared library for the BotMill framework.</description>
 	<url>http://www.botmill.io</url>
@@ -38,7 +38,7 @@
 		<url>https://github.com/BotMill/botmill-core</url>
 		<connection>scm:git:git://github.com/BotMill/botmill-core.git</connection>
 		<developerConnection>scm:git:git@github.com:BotMill/botmill-core.git</developerConnection>
-		<tag>botmill-core-1.0.0</tag>
+		<tag>botmill-core-1.0.1</tag>
 	</scm>
 	<distributionManagement>
 		<snapshotRepository>

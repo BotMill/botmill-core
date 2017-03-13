@@ -24,6 +24,8 @@
 package co.aurasphere.botmill.core.internal.util;
 
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import org.jasypt.encryption.pbe.PBEStringCleanablePasswordEncryptor;
@@ -36,6 +38,7 @@ import co.aurasphere.botmill.core.annotation.Bot;
 import co.aurasphere.botmill.core.annotation.BotEncryption;
 import co.aurasphere.botmill.core.internal.exception.BotMillConfigurationException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Utility class for handling BotMill configuration.
  * 
@@ -58,6 +61,9 @@ public class ConfigurationUtils {
 	/** The encrypted configuration. */
 	private static EncryptableProperties encryptedConfiguration;
 
+	/** The bot definition instance list **/
+	private static List<BotDefinition> botDefinitionInstances;
+
 	/**
 	 * The name of the BotMill properties file with the platform configuration.
 	 * It must be placed on the classpath. If you have a Maven project, just
@@ -77,9 +83,8 @@ public class ConfigurationUtils {
 
 		// Gets all the subclasses of bot definition.
 		Reflections ref = new Reflections();
-		Set<Class<? extends BotDefinition>> botDefinitions = ref
-				.getSubTypesOf(BotDefinition.class);
-
+		Set<Class<? extends BotDefinition>> botDefinitions = ref.getSubTypesOf(BotDefinition.class);
+		botDefinitionInstances = new ArrayList<BotDefinition>();
 		if (botDefinitions.isEmpty()) {
 			logger.warn("No bot definition found on the classpath. Make sure to have at least one class implementing the BotDefinition interface.");
 		}
@@ -99,6 +104,7 @@ public class ConfigurationUtils {
 
 			try {
 				BotDefinition instance = defClass.newInstance();
+				botDefinitionInstances.add(instance);
 				instance.defineBehaviour();
 			} catch (ClassCastException e) {
 				logger.error(
@@ -235,6 +241,15 @@ public class ConfigurationUtils {
 	 */
 	public static void setEncryptedConfiguration(EncryptableProperties encryptedConfiguration) {
 		ConfigurationUtils.encryptedConfiguration = encryptedConfiguration;
+	}
+	
+	/**
+	 * Gets the bot definitions.
+	 *
+	 * @return the bot definitions
+	 */
+	public static List<BotDefinition> getBotDefinitionInstance() {
+		return botDefinitionInstances;
 	}
 
 	/*

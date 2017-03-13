@@ -52,23 +52,6 @@ public class BotMillConfigurationException extends RuntimeException {
 	 *            the message.
 	 * @param cause
 	 *            the cause.
-	 * @param enableSuppression
-	 *            the enableSuppression.
-	 * @param writableStackTrace
-	 *            the writableStackTrace.
-	 */
-	public BotMillConfigurationException(String message, Throwable cause,
-			boolean enableSuppression, boolean writableStackTrace) {
-		super(message, cause, enableSuppression, writableStackTrace);
-	}
-
-	/**
-	 * Instantiates a new BotMillConfigurationException.
-	 *
-	 * @param message
-	 *            the message.
-	 * @param cause
-	 *            the cause.
 	 */
 	public BotMillConfigurationException(String message, Throwable cause) {
 		super(message, cause);

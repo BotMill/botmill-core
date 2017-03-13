@@ -38,7 +38,7 @@ import co.aurasphere.botmill.core.annotation.Bot;
 import co.aurasphere.botmill.core.annotation.BotEncryption;
 import co.aurasphere.botmill.core.internal.exception.BotMillConfigurationException;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * Utility class for handling BotMill configuration.
  * 
@@ -250,6 +250,14 @@ public class ConfigurationUtils {
 	 */
 	public static List<BotDefinition> getBotDefinitionInstance() {
 		return botDefinitionInstances;
+	}
+	
+	/**
+	 * Sets the Bot Definition Instances
+	 * @param botDefinitionInstances
+	 */
+	public static void setBotDefinitionInstance(List<BotDefinition> botDefinitionInstances) {
+		ConfigurationUtils.botDefinitionInstances = botDefinitionInstances;
 	}
 
 	/*

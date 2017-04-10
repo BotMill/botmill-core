@@ -45,6 +45,7 @@ import org.slf4j.LoggerFactory;
  * network.
  * 
  * @author Donato Rimenti
+ * @author Alvin Reyes
  * 
  */
 public class NetworkUtils {
@@ -137,7 +138,8 @@ public class NetworkUtils {
 	 */
 	public static BotMillNetworkResponse post(String url, StringEntity entity) {
 		HttpPost post = new HttpPost(url);
-		post.setHeader("Content-Type", "application/x-www-form-urlencoded");
+		//post.setHeader("Content-Type", "application/x-www-form-urlencoded");
+		post.setHeader("Content-Type","application/json");
 		post.setEntity(entity);
 		return send(post);
 	}

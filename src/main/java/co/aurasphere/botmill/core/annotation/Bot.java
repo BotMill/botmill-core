@@ -45,4 +45,6 @@ public @interface Bot {
 	 * @return the string
 	 */
 	String meta() default "";
+	
+	int sequence() default 0;
 }

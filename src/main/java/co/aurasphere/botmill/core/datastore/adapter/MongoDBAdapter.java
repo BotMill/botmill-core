@@ -52,14 +52,14 @@ public class MongoDBAdapter extends BotDataAdapter<MongoOperations> {
 	public void setup() {
 		
 		MongoCredential credential = MongoCredential.createCredential(
-				ConfigurationUtils.getConfiguration().getProperty("mongodb.username"), 
-				ConfigurationUtils.getConfiguration().getProperty("mongodb.database"), 
-				ConfigurationUtils.getConfiguration().getProperty("mongodb.password").toCharArray());
+				ConfigurationUtils.getEncryptedConfiguration().getProperty("mongodb.username"), 
+				ConfigurationUtils.getEncryptedConfiguration().getProperty("mongodb.database"), 
+				ConfigurationUtils.getEncryptedConfiguration().getProperty("mongodb.password").toCharArray());
 		ServerAddress serverAddress = new ServerAddress(
-				ConfigurationUtils.getConfiguration().getProperty("mongodb.server"), 
-				Integer.valueOf(ConfigurationUtils.getConfiguration().getProperty("mongodb.port")));
+				ConfigurationUtils.getEncryptedConfiguration().getProperty("mongodb.server"), 
+				Integer.valueOf(ConfigurationUtils.getEncryptedConfiguration().getProperty("mongodb.port")));
 		MongoClient mongoClient = new MongoClient(serverAddress, Arrays.asList(credential));
-		SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongoClient, ConfigurationUtils.getConfiguration().getProperty("mongodb.database"));
+		SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongoClient, ConfigurationUtils.getEncryptedConfiguration().getProperty("mongodb.database"));
 
 		MongoTemplate mongoTemplate = new MongoTemplate(simpleMongoDbFactory);
 		this.source = (MongoOperations) mongoTemplate;

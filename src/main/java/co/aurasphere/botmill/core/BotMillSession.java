@@ -67,7 +67,7 @@ public class BotMillSession {
 	private BotMillSession() {
 		//	check the data adapter type from the properties.
 		//	map, hsql, mongodb, rdbms
-		String dataAdapterType = ConfigurationUtils.getConfiguration().getProperty("data.adapter.type");
+		String dataAdapterType = ConfigurationUtils.getEncryptedConfiguration().getProperty("data.adapter.type");
 		if(dataAdapterType == null || dataAdapterType.equals("map")) {
 			defineDataAdapter(DataAdapterType.MAP);
 		}else if(dataAdapterType.equals("mongodb")){

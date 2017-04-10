@@ -138,11 +138,8 @@ public class NetworkUtils {
 	 */
 	public static BotMillNetworkResponse post(String url, StringEntity entity) {
 		HttpPost post = new HttpPost(url);
-<<<<<<< HEAD
 		//post.setHeader("Content-Type", "application/x-www-form-urlencoded");
 		post.setHeader("Content-Type","application/json");
-=======
->>>>>>> 3f4f140759fe822da11a2ea5b7f289e61a920ca2
 		post.setEntity(entity);
 		return send(post);
 	}

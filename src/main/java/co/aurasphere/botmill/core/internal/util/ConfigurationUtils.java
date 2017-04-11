@@ -251,10 +251,11 @@ public class ConfigurationUtils {
 	public static List<BotDefinition> getBotDefinitionInstance() {
 		return botDefinitionInstances;
 	}
-	
+
 	/**
 	 * Sets the Bot Definition Instances
 	 * @param botDefinitionInstances
+	 * 		the list of bot definition instances
 	 */
 	public static void setBotDefinitionInstance(List<BotDefinition> botDefinitionInstances) {
 		ConfigurationUtils.botDefinitionInstances = botDefinitionInstances;

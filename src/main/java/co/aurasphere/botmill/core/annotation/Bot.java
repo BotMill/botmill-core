@@ -30,6 +30,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import co.aurasphere.botmill.core.BotBeanState;
+
 /**
  * The Interface Bot.
  */
@@ -46,5 +48,5 @@ public @interface Bot {
 	 */
 	String meta() default "";
 	
-	int sequence() default 0;
+	BotBeanState state() default BotBeanState.SINGLETON;
 }

@@ -37,6 +37,8 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,7 +66,10 @@ public class NetworkUtils {
 	 * @return response the response.
 	 */
 	private static BotMillNetworkResponse send(HttpRequestBase request) {
-		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+		PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager();
+		CloseableHttpClient httpClient = HttpClients.custom()
+                .setConnectionManager(cm)
+                .build();
 		logger.debug("HTTP request: {}", request.getRequestLine().toString());
 		HttpResponse httpResponse = null;
 		String responseContent = null;

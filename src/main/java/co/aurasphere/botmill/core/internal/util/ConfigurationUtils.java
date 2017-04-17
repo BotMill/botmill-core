@@ -23,6 +23,7 @@
  */
 package co.aurasphere.botmill.core.internal.util;
 
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,7 @@ public class ConfigurationUtils {
 
 	/** The bot definition instance list **/
 	private static List<BotDefinition> botDefinitionInstances;
-
+	
 	/**
 	 * The name of the BotMill properties file with the platform configuration.
 	 * It must be placed on the classpath. If you have a Maven project, just

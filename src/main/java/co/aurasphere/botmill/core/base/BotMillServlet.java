@@ -59,6 +59,7 @@ public class BotMillServlet extends HttpServlet {
 	public void init() {
 		ConfigurationUtils.loadEncryptedConfigurationProperties();
 		ConfigurationUtils.loadConfigurationFile();
+		ConfigurationUtils.loadBotConfig();
 		ConfigurationUtils.loadBotDefinitions();
 		logger.info("BotMill servlet started.");
 	}
